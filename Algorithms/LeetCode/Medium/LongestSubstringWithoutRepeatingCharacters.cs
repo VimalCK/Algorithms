@@ -1,25 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
-using static Algorithms.IAlogrithm;
 
 namespace Algorithms.LeetCode.Medium
 {
-    public class LongestSubstringWithoutRepeatingCharacters : IAlgorithm<string, int>
+    public class LongestSubstringWithoutRepeatingCharacters : TheoryData<string, int>
     {
-        public static IEnumerable<object[]> Parameters => new List<object[]>
+        public LongestSubstringWithoutRepeatingCharacters()
         {
-            new object[]{ "abcabcbb", 3 },
-            new object[]{ "bbbbb", 1 },
-            new object[]{ "pwwkew", 3 }
-        };
+            Add("abcabcbb", 3);
+            Add("bbbbb", 1);
+            Add("pwwkew", 3);
+        }
 
         [Theory]
-        [MemberData(nameof(Parameters))]
-        public void Run(string value1, int value2)
+        [ClassData(typeof(LongestSubstringWithoutRepeatingCharacters))]
+        public void ShouldReturnLengthOfLongestSubstringWithoutRepeatingCharecter(string value1, int value2)
         {
             var result = LengthOfLongestSubstring(value1);
 
@@ -27,7 +23,7 @@ namespace Algorithms.LeetCode.Medium
         }
 
 
-        public int LengthOfLongestSubstring(string s)
+        private int LengthOfLongestSubstring(string s)
         {
             int count = 0;
             string temp = string.Empty;

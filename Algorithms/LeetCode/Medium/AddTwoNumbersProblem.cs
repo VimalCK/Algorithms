@@ -13,10 +13,10 @@ namespace Algorithms.LeetCode.Medium
         }
     }
 
-    public class AddTwoNumbersProblem : IAlogrithm
+    public class AddTwoNumbersProblem : TheoryData<int[],int>
     {
         [Fact]
-        public void Run()
+        public void AddTwoListNodeShouldReturnCorrectSum()
         {
             var node1 = new ListNode(2);
             node1.next = new ListNode(4);
@@ -33,7 +33,7 @@ namespace Algorithms.LeetCode.Medium
             Assert.Equal(8, result.next.next.val);
         }
 
-        public ListNode AddTwoNumbers(ListNode l1, ListNode l2)
+        private ListNode AddTwoNumbers(ListNode l1, ListNode l2)
         {
             var node = new ListNode();
             var temp = node;
