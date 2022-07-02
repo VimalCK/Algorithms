@@ -40,7 +40,7 @@ namespace Algorithms.LeetCode.Easy
                 dictionary[temp] = i;
             }
 
-            return null;
+            return new int[] { };
         }
     }
 }
