@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Algorithms.LeetCode.Easy
+namespace Algorithms.LeetCode.Medium
 {
     public class MaximumSubArrayProblem : TheoryData<int[], int>
     {
