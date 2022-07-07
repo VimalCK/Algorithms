@@ -9,6 +9,7 @@ namespace Algorithms.LeetCode.Easy
         public RansomNote()
         {
             Add("a", "b", false);
+            Add("a", "ab", true);
             Add("aa", "ab", false);
             Add("aa", "aab", true);
             Add("aab", "baa", true);
