@@ -17,9 +17,10 @@ namespace Algorithms.LeetCode.Easy
         {
             var result = MergeTwoLists(listNode1, listNode2);
 
+            Assert.True(result.AreEqual(expectedResult));
         }
 
-        public ListNode MergeTwoLists(ListNode list1, ListNode list2)
+        public ListNode? MergeTwoLists(ListNode? list1, ListNode? list2)
         {
             if (list1 == null || list2 == null)
             {
