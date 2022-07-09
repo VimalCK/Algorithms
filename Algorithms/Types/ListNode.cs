@@ -13,14 +13,47 @@ namespace Algorithms.Types
         public int val { get; set; }
         public ListNode? next { get; set; }
 
-        public ListNode(int val = 0) => this.val = val;
+        public ListNode(int headValue = 0, params int[] values)
+        {
+            this.val = headValue;
+            var temp = this;
+            foreach (var value in values)
+            {
+                temp.next = new ListNode(value);
+                temp = temp.next;
+            }
+        }
 
-        public ListNode Add(int value) => Add(new ListNode(value));
+        public ListNode Add(params int[] values)
+        {
+            var lastNode = GetLastNode();
+            foreach (var item in values)
+            {
+                lastNode.next = new ListNode(item);
+                lastNode = lastNode.next;
+            }
+
+            return this;
+        }
+
 
         public ListNode Add(ListNode node)
         {
-            next = node;
-            return next;
+            var lastNode = GetLastNode();
+            lastNode.next = node;
+
+            return this;
+        }
+
+        private ListNode GetLastNode()
+        {
+            var temp = this;
+            while (temp.next is not null)
+            {
+                temp = temp.next;
+            }
+
+            return temp;
         }
     }
 }
