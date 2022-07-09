@@ -7,7 +7,7 @@ namespace Algorithms.LeetCode.Easy
     {
         public RemoveLinkedListItems()
         {
-            // Add(new ListNode( 1, 2, 3, 4, 5), 6, new ListNode(1, 2, 3, 4, 5));
+             Add(new ListNode( 1, 2, 3, 4, 5), 6, new ListNode(1, 2, 3, 4, 5));
             Add(new ListNode(1, 2, 6, 3, 4, 5, 6), 6, new ListNode(1, 2, 3, 4, 5));
         }
 

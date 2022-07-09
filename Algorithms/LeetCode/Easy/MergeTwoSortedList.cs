@@ -8,7 +8,7 @@ namespace Algorithms.LeetCode.Easy
     {
         public MergeTwoSortedList()
         {
-            Add(new ListNode(1,2,4), new ListNode(1,3,4), new ListNode(1,1,2,3,4,4));
+            Add(new ListNode(1, 2, 4), new ListNode(1, 3, 4), new ListNode(1, 1, 2, 3, 4, 4));
         }
 
         [Theory]
@@ -21,29 +21,43 @@ namespace Algorithms.LeetCode.Easy
 
         public ListNode MergeTwoLists(ListNode list1, ListNode list2)
         {
-            var items = new Queue<ListNode>();
-            while (list1 != null)
+            if (list1 == null || list2 == null)
             {
-                var temp = list1;
-                temp.next = null;
-                items.Enqueue(temp);
-                list1 = list1.next;
+                return list1 ?? list2;
+            }
+            if (list1.val <= list2.val)
+            {
+                list1.next = MergeTwoLists(list1.next, list2);
+                return list1;
+            }
+            else
+            {
+                list2.next = MergeTwoLists(list1, list2.next);
+                return list2;
             }
 
-            while (items.Count > 0)
-            {
-                var node = items.Dequeue();
-                var temp = list2;
-                while (temp != null)
-                {
-                    if (node.val < temp.val)
-                    {
 
-                    }
-                }
-            }
+            //var result = new ListNode(int.MinValue);
+            //var previous = result;
 
-            return list2;
+            //while (list1 != null && list2 != null)
+            //{
+            //    if (list1.val <= list2.val)
+            //    {
+            //        previous.next = list1;
+            //        list1 = list1.next;
+            //    }
+            //    else
+            //    {
+            //        previous.next = list2;
+            //        list2 = list2.next;
+            //    }
+
+            //    previous = previous.next;
+            //}
+
+            //previous.next = list1 ?? list2;
+            //return result.next; 
         }
     }
 }

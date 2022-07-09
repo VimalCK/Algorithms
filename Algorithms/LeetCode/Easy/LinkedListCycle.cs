@@ -34,7 +34,7 @@ namespace Algorithms.LeetCode.Easy
                 slow = slow.next;
                 fast = fast.next.next;
 
-                if (fast == head)
+                if (fast == slow)
                 {
                     return true;
                 }
