@@ -1,4 +1,5 @@
 ﻿using Algorithms.Types;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Algorithms.LeetCode.Easy
@@ -21,7 +22,28 @@ namespace Algorithms.LeetCode.Easy
 
         public ListNode ReverseList(ListNode head)
         {
-            return head;
+            if (head == null || head.next == null)
+            {
+                return head;
+            }
+
+            var result = ReverseList(head.next);
+            head.next.next = head;
+            head.next = null;
+            return result;
+
+            //ListNode current = head;
+            //ListNode previous = null;
+
+            //while (current != null)
+            //{
+            //    var temp = current.next;
+            //    current.next = previous;
+            //    previous = current;
+            //    current = temp;
+            //}
+
+            //return previous;
         }
     }
 }
