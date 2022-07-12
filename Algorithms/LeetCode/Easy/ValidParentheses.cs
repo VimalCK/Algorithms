@@ -1,4 +1,6 @@
-﻿using Xunit;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Xunit;
 
 namespace Algorithms.LeetCode.Easy
 {
@@ -16,21 +18,52 @@ namespace Algorithms.LeetCode.Easy
     {
         public ValidParentheses()
         {
-            Add("()", true);
-            Add("()[]{}", true);
-            Add("(]", false);
+            Add("([)]", false);
+            //Add("]", false);
+            //Add("()", true);
+            //Add("()[]{}", true);
+            //Add("(]", false);
         }
 
         [Theory]
         [ClassData(typeof(ValidParentheses))]
-        public void Return_True_If_Parentheses_Are_Valid()
+        public void Return_True_If_Parentheses_Are_Valid(string value, bool expectedResult)
         {
+            var result = IsValid(value);
 
+            Assert.Equal(expectedResult, result);
         }
 
         public bool IsValid(string s)
         {
+            var parantheses = new Dictionary<char, char>()
+            {
+                {'(',')' },
+                {'{','}' },
+                {'[',']' }
+            };
 
+            var stack = new Stack<char>();
+            foreach (var item in s)
+            {
+                if (parantheses.TryGetValue(item, out char chr))
+                {
+                    stack.Push(chr);
+                    continue;
+                }
+
+                if (stack.Count != 0 && stack.Peek() == item)
+                {
+                    stack.Pop();
+                }
+                else
+                {
+                    stack.Push(item);
+                    break;
+                }
+            }
+
+            return stack.Count == 0;
         }
     }
 }
