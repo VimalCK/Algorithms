@@ -4,6 +4,9 @@ using Xunit;
 
 namespace Algorithms.LeetCode.Medium
 {
+    /*
+     * Given a string s, find the length of the longest substring without repeating characters.
+     */
     public class LongestSubstringWithoutRepeatingCharacters : TheoryData<string, int>
     {
         public LongestSubstringWithoutRepeatingCharacters()
