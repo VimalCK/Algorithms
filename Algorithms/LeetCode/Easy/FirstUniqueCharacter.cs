@@ -3,6 +3,10 @@ using Xunit;
 
 namespace Algorithms.LeetCode.Easy
 {
+    /*
+     Given a string s, find the first non-repeating character in it and return its index. If it does not exist, return -1.
+     */
+
     public class FirstUniqueCharacter : TheoryData<string, int>
     {
         public FirstUniqueCharacter()

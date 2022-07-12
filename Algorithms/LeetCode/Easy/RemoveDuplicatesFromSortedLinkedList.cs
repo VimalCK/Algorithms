@@ -3,11 +3,15 @@ using Xunit;
 
 namespace Algorithms.LeetCode.Easy
 {
+    /* 
+     Given the head of a sorted linked list, delete all duplicates such that each element 
+    appears only once. Return the linked list sorted as well.
+     */
     public class RemoveDuplicatesFromSortedLinkedList : TheoryData<ListNode, ListNode>
     {
         public RemoveDuplicatesFromSortedLinkedList()
         {
-            // Add(new ListNode(1, 1, 2), new ListNode(1, 2));
+             Add(new ListNode(1, 1, 2), new ListNode(1, 2));
             Add(new ListNode(1, 1, 2, 3, 3), new ListNode(1, 2, 3));
         }
 
