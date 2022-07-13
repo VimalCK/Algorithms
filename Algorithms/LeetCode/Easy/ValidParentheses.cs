@@ -19,10 +19,10 @@ namespace Algorithms.LeetCode.Easy
         public ValidParentheses()
         {
             Add("([)]", false);
-            //Add("]", false);
-            //Add("()", true);
-            //Add("()[]{}", true);
-            //Add("(]", false);
+            Add("]", false);
+            Add("()", true);
+            Add("()[]{}", true);
+            Add("(]", false);
         }
 
         [Theory]

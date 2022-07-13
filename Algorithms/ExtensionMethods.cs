@@ -14,12 +14,31 @@ namespace Algorithms
         {
             while (node1 != null || node2 != null)
             {
-                if (node1?.val != node2?.val) {
+                if (node1?.val != node2?.val)
+                {
                     return false;
                 }
 
                 node1 = node1?.next;
                 node2 = node2?.next;
+            }
+
+            return true;
+        }
+
+        public static bool AreEqual<T>(this T[] array, T[] values)
+        {
+            if (array.Length != values.Length)
+            {
+                return false;
+            }
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (!object.Equals(array[i], values[i]))
+                {
+                    return false;
+                }
             }
 
             return true;
