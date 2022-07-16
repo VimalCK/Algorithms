@@ -6,6 +6,11 @@ namespace Algorithms.LeetCode.Easy
 {
     /*
      * Given the root of a binary tree, return the preorder traversal of its nodes' values.
+     *                         1
+     *                        / \
+     *                       2   3
+     *                      / \
+     *                     4   5
      */
     public class BinaryTreePreOrderTraversal : TheoryData<TreeNode, IList<int>>
     {
