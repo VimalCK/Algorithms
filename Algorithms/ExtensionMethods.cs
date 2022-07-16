@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
 
 namespace Algorithms
 {
@@ -26,22 +23,9 @@ namespace Algorithms
             return true;
         }
 
-        public static bool AreEqual<T>(this T[] array, T[] values)
+        public static bool AreEqual<T>(this IEnumerable<T> array, IEnumerable<T> values)
         {
-            if (array.Length != values.Length)
-            {
-                return false;
-            }
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (!object.Equals(array[i], values[i]))
-                {
-                    return false;
-                }
-            }
-
-            return true;
+            return array.Count() != values.Count() ? false : array.SequenceEqual(values);
         }
     }
 }
