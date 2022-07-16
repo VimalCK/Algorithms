@@ -1,0 +1,44 @@
+﻿using Algorithms.Types;
+using System.Collections.Generic;
+using Xunit;
+
+namespace Algorithms.LeetCode.Easy
+{
+    /*
+     * Given the root of a binary tree, return the inorder traversal of its nodes' values.
+     */
+    public class BinaryTreeInOrderTraversal : TheoryData<TreeNode, int[]>
+    {
+        public BinaryTreeInOrderTraversal()
+        {
+            Add(null, new int[] { });
+            Add(new TreeNode(1), new int[] { 1 });
+            Add(new TreeNode(1, null, new TreeNode(2, new TreeNode(3))), new int[] { 1, 3, 2 });
+            Add(new TreeNode(1, new TreeNode(2, new TreeNode(4), new TreeNode(5)), new TreeNode(3)), new int[] { 4, 2, 5, 1, 3 });
+        }
+
+        [Theory]
+        [ClassData(typeof(BinaryTreeInOrderTraversal))]
+        public void ReturnValuesUsingInorderTraversal(TreeNode root, int[] expectedResult)
+        {
+            var result = InorderTraversal(root);
+
+            Assert.True(result.AreEqual(expectedResult));
+        }
+
+        public IList<int> InorderTraversal(TreeNode? root)
+        {
+            if (root == null)
+            {
+                return new int[] { };
+            }
+
+            var result = new List<int>();
+            result.AddRange(InorderTraversal(root.left));
+            result.Add(root.val);
+            result.AddRange(InorderTraversal(root.right));
+
+            return result;
+        }
+    }
+}
