@@ -18,7 +18,7 @@ namespace Algorithms.LeetCode.Easy
         public MaximumDepthOfBInaryTree()
         {
             Add(new TreeNode(1, new TreeNode(2)), 2);
-            //Add(new TreeNode(3, new TreeNode(9), new TreeNode(20, new TreeNode(15), new TreeNode(7))), 3);
+            Add(new TreeNode(3, new TreeNode(9), new TreeNode(20, new TreeNode(15), new TreeNode(7))), 3);
         }
 
         [Theory]

@@ -27,5 +27,10 @@ namespace Algorithms
         {
             return array.Count() != values.Count() ? false : array.SequenceEqual(values);
         }
+
+        public static bool AreEqual(this TreeNode? node, TreeNode? value)
+        {
+            return true;
+        }
     }
 }
