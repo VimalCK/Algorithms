@@ -11,5 +11,10 @@
             this.left = left;
             this.right = right;
         }
+
+        public TreeNode(int?[] values)
+        {
+
+        }
     }
 }
