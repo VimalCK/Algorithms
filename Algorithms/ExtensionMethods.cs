@@ -30,7 +30,12 @@ namespace Algorithms
 
         public static bool AreEqual(this TreeNode? node, TreeNode? value)
         {
-            return true;
+            if (node is null && value is null)
+            {
+                return true;
+            }
+
+            return node?.val == value?.val && AreEqual(node?.left, value?.left) && AreEqual(node?.right, value?.right);
         }
     }
 }

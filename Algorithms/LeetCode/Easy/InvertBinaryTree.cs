@@ -9,13 +9,13 @@ namespace Algorithms.LeetCode.Easy
      *                 / \             / \
      *                2   7           7   2
      *               /\   /\         /\   /\
-     *              1  3 6  9       6  9 3  1
+     *              1  3 6  9       9  6 3  1
      */
     public class InvertBinaryTree : TheoryData<TreeNode, TreeNode>
     {
         public InvertBinaryTree()
         {
-            Add(null, null);
+            Add(new(4, new(2, new(1), new(3)), new(7, new(6), new(9))), new(4, new(7, new(9), new(6)), new(2, new(3), new(1))));
         }
 
         [Theory]
@@ -26,9 +26,19 @@ namespace Algorithms.LeetCode.Easy
             Assert.True(expectedResult.AreEqual(result));
         }
 
-        public TreeNode InvertTree(TreeNode root)
+        public TreeNode? InvertTree(TreeNode? root)
         {
+            if (root == null)
+            {
+                return null;
+            }
 
+            var temp = root.left;
+            root.left = root.right;
+            root.right = temp;
+            InvertTree(root.left);
+            InvertTree(root.right);
+            return root;
         }
     }
 }
