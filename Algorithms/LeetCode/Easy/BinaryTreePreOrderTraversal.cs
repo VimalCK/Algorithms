@@ -12,7 +12,7 @@ namespace Algorithms.LeetCode.Easy
      *                      / \
      *                     4   5
      */
-    public class BinaryTreePreOrderTraversal : TheoryData<TreeNode, IList<int>>
+    public class BinaryTreePreOrderTraversal : TheoryData<TreeNode?, IList<int>>
     {
         public BinaryTreePreOrderTraversal()
         {
@@ -23,19 +23,19 @@ namespace Algorithms.LeetCode.Easy
 
         [Theory]
         [ClassData(typeof(BinaryTreePreOrderTraversal))]
-        public void MyTheory(TreeNode root, IList<int> expectedResult)
+        public void MyTheory(TreeNode root, IList<int?> expectedResult)
         {
             var result = PreorderTraversal(root);
 
-            Assert.True(result.AreEqual(expectedResult));
+            Assert.True(ExtensionMethods.AreEqual<int?>(result, expectedResult));
         }
 
-        public IList<int> PreorderTraversal(TreeNode? root)
+        public IList<int?> PreorderTraversal(TreeNode? root)
         {
-            var result = new List<int>();
+            var result = new List<int?>();
             if (root == null)
             {
-                return new int[] { };
+                return new int?[] { };
             }
 
             result.Add(root.val);

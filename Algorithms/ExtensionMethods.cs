@@ -23,7 +23,7 @@ namespace Algorithms
             return true;
         }
 
-        public static bool AreEqual<T>(this IEnumerable<T> array, IEnumerable<T> values)
+        public static bool AreEqual<T>(this IEnumerable<T?> array, IEnumerable<T?> values)
         {
             return array.Count() != values.Count() ? false : array.SequenceEqual(values);
         }

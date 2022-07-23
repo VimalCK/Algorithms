@@ -12,7 +12,7 @@ namespace Algorithms.LeetCode.Easy
      *                      / \
      *                     4   5
      */
-    public class BinaryTreePostOrderTraversal : TheoryData<TreeNode, int[]>
+    public class BinaryTreePostOrderTraversal : TheoryData<TreeNode?, int[]>
     {
         public BinaryTreePostOrderTraversal()
         {
@@ -24,21 +24,21 @@ namespace Algorithms.LeetCode.Easy
 
         [Theory]
         [ClassData(typeof(BinaryTreePostOrderTraversal))]
-        public void ReturnTreeNodeValuesInPostOrderTraversal(TreeNode root, int[] expectedResult)
+        public void ReturnTreeNodeValuesInPostOrderTraversal(TreeNode root, int?[] expectedResult)
         {
             var result = PostorderTraversal(root);
 
-            Assert.True(result.AreEqual(expectedResult));
+            Assert.True(ExtensionMethods.AreEqual<int?>(result, expectedResult));
         }
 
-        public IList<int> PostorderTraversal(TreeNode? root)
+        public IList<int?> PostorderTraversal(TreeNode? root)
         {
             if (root == null)
             {
-                return new int[] { };
+                return new int?[] { };
             }
 
-            var result = new List<int>();
+            var result = new List<int?>();
             result.AddRange(PostorderTraversal(root.left));
             result.AddRange(PostorderTraversal(root.right));
             result.Add(root.val);

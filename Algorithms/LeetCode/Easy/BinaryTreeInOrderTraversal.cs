@@ -12,33 +12,33 @@ namespace Algorithms.LeetCode.Easy
      *                      / \
      *                     4   5
      */
-    public class BinaryTreeInOrderTraversal : TheoryData<TreeNode, int[]>
+    public class BinaryTreeInOrderTraversal : TheoryData<TreeNode?, int?[]>
     {
         public BinaryTreeInOrderTraversal()
         {
-            Add(null, new int[] { });
-            Add(new TreeNode(1), new int[] { 1 });
-            Add(new TreeNode(new int?[] { 1, null, 2, 3 }), new int[] { 1, 3, 2 });
-            Add(new TreeNode(new int?[] { 1, 2, 4, 5, 3 }), new int[] { 4, 2, 5, 1, 3 });
+            Add(null, new int?[] { });
+            Add(new TreeNode(1), new int?[] { 1 });
+            Add(new TreeNode(new int?[] { 1, null, 2, 3 }), new int?[] { 1, 3, 2 });
+            Add(new TreeNode(new int?[] { 1, 2, 4, 5, 3 }), new int?[] { 4, 2, 5, 1, 3 });
         }
 
         [Theory]
         [ClassData(typeof(BinaryTreeInOrderTraversal))]
-        public void ReturnValuesUsingInorderTraversal(TreeNode root, int[] expectedResult)
+        public void ReturnValuesUsingInorderTraversal(TreeNode root, int?[] expectedResult)
         {
             var result = InorderTraversal(root);
 
-            Assert.True(result.AreEqual(expectedResult));
+            Assert.True(ExtensionMethods.AreEqual<int?>(result, expectedResult));
         }
 
-        public IList<int> InorderTraversal(TreeNode? root)
+        public IList<int?> InorderTraversal(TreeNode? root)
         {
             if (root == null)
             {
-                return new int[] { };
+                return new List<int?>();
             }
 
-            var result = new List<int>();
+            var result = new List<int?>();
             result.AddRange(InorderTraversal(root.left));
             result.Add(root.val);
             result.AddRange(InorderTraversal(root.right));

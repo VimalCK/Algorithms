@@ -11,6 +11,8 @@ namespace Algorithms.LeetCode.Easy
     {
         public ReverseLinkedList()
         {
+            var s = new List<string>();
+            
             Add(new ListNode(1, 2, 3, 4, 5), new ListNode(5, 4, 3, 2, 1));
         }
 
@@ -23,7 +25,7 @@ namespace Algorithms.LeetCode.Easy
             Assert.True(result.AreEqual(expectedResult));
         }
 
-        public ListNode ReverseList(ListNode head)
+        public ListNode? ReverseList(ListNode head)
         {
             if (head == null || head.next == null)
             {

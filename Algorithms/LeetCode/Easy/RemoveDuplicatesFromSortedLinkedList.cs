@@ -24,7 +24,7 @@ namespace Algorithms.LeetCode.Easy
             Assert.True(result.AreEqual(expectedResult));
         }
 
-        public ListNode DeleteDuplicates(ListNode head)
+        public ListNode? DeleteDuplicates(ListNode head)
         {
             if (head == null || head.next == null)
             {
@@ -32,7 +32,7 @@ namespace Algorithms.LeetCode.Easy
             }
 
             var result = DeleteDuplicates(head.next);
-            if (result.val != head.val)
+            if (result?.val != head.val)
             {
                 head.next = result;
                 result = head;
