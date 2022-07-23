@@ -11,14 +11,16 @@ namespace Algorithms.LeetCode.Easy
      *                       2   3
      *                      / \
      *                     4   5
+     *                     
+     *                     1 - 2 - 4- 5 - 3
      */
-    public class BinaryTreePreOrderTraversal : TheoryData<TreeNode?, IList<int>>
+    public class BinaryTreePreOrderTraversal : TheoryData<TreeNode?, IList<int?>>
     {
         public BinaryTreePreOrderTraversal()
         {
-            Add(null, new int[] { });
-            Add(new TreeNode(1), new int[] { 1 });
-            Add(new TreeNode(new int?[] { 1, null, 2, 3 }), new int[] { 1, 2, 3 });
+            Add(null, new int?[] { });
+            Add(new TreeNode(1), new int?[] { 1 });
+            Add(new TreeNode(new int?[] { 1, null, 2, 3 }), new int?[] { 1, 2, 3 });
         }
 
         [Theory]

@@ -16,8 +16,8 @@ namespace Algorithms.LeetCode.Easy
     {
         public SymmetricTree()
         {
-            Add(new TreeNode(new int?[] { 1, 2, 3, 4, 2, 3, 4 }), true);
-            Add(new TreeNode(new int?[] { 1, 2, null, 3, 2, null, 3 }), false);
+            Add(new TreeNode(new int?[] { 1, 2, 2, 3, 4, 4, 3 }), true);
+            Add(new TreeNode(new int?[] { 1, 2, 2, null, 3, null, 3 }), false);
             Add(new(1, new(0), null), false);
         }
 

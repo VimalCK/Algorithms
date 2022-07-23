@@ -15,7 +15,7 @@ namespace Algorithms.LeetCode.Easy
     {
         public InvertBinaryTree()
         {
-            Add(new TreeNode(new int?[] { 4, 2, 1, 3, 7, 6, 9 }), new TreeNode(new int?[] { 4, 7, 9, 6, 2, 3, 1 }));
+            Add(new TreeNode(new int?[] { 4, 2, 7, 1, 3, 6, 9 }), new TreeNode(new int?[] { 4, 7, 2, 9, 6, 3, 1 }));
         }
 
         [Theory]

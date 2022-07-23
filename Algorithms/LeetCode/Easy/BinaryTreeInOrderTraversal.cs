@@ -11,6 +11,8 @@ namespace Algorithms.LeetCode.Easy
      *                       2   3
      *                      / \
      *                     4   5
+     *                     
+     *                     4 - 2 - 5 - 1 - 3
      */
     public class BinaryTreeInOrderTraversal : TheoryData<TreeNode?, int?[]>
     {
@@ -19,7 +21,7 @@ namespace Algorithms.LeetCode.Easy
             Add(null, new int?[] { });
             Add(new TreeNode(1), new int?[] { 1 });
             Add(new TreeNode(new int?[] { 1, null, 2, 3 }), new int?[] { 1, 3, 2 });
-            Add(new TreeNode(new int?[] { 1, 2, 4, 5, 3 }), new int?[] { 4, 2, 5, 1, 3 });
+            Add(new TreeNode(new int?[] { 1, 2, 3, 4, 5 }), new int?[] { 4, 2, 5, 1, 3 });
         }
 
         [Theory]
