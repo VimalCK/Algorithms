@@ -5,10 +5,10 @@ namespace Algorithms.Types
 {
     public class TreeNode
     {
-        public int? val;
+        public int val;
         public TreeNode? left;
         public TreeNode? right;
-        public TreeNode(int? val = 0, TreeNode? left = null, TreeNode? right = null)
+        public TreeNode(int val = 0, TreeNode? left = null, TreeNode? right = null)
         {
             this.val = val;
             this.left = left;
@@ -21,12 +21,12 @@ namespace Algorithms.Types
             var nodes = new Queue<TreeNode>();
 
             TreeNode root = this;
-            if (!queue.TryDequeue(out var result))
+            if (!queue.TryDequeue(out var result) || result is null)
             {
                 return;
             }
 
-            root.val = result;
+            root.val = result.Value;
             nodes.Enqueue(root);
 
             while (nodes.Any())
@@ -34,13 +34,13 @@ namespace Algorithms.Types
                 var temp = nodes.Dequeue();
                 if (queue.TryDequeue(out result) && result is not null)
                 {
-                    temp.left = new TreeNode(result);
+                    temp.left = new TreeNode(result.Value);
                     nodes.Enqueue(temp.left);
                 }
 
                 if (queue.TryDequeue(out result) & result is not null)
                 {
-                    temp.right = new TreeNode(result);
+                    temp.right = new TreeNode(result.Value);
                     nodes.Enqueue(temp.right);
                 }
             }

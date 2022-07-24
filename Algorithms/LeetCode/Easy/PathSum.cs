@@ -1,4 +1,6 @@
 ﻿using Algorithms.Types;
+using Newtonsoft.Json.Linq;
+using System;
 using Xunit;
 
 namespace Algorithms.LeetCode.Easy
@@ -21,7 +23,8 @@ namespace Algorithms.LeetCode.Easy
     {
         public PathSum()
         {
-            //Add(new(5, new(4, new(11, new(7), new(2))), new(8, new(13), new(4, null, new(1)))), 22, true);
+            Add(new TreeNode(new int?[] { -2, null, -3 }), -5, true);
+            Add(new TreeNode(new int?[] { 1, 2 }), 1, false);
             Add(new TreeNode(new int?[] { 5, 4, 8, 11, null, 13, 4, 7, 2, null, null, null, 1 }), 22, true);
         }
 
@@ -34,9 +37,20 @@ namespace Algorithms.LeetCode.Easy
             Assert.Equal(expectedResult, result);
         }
 
-        public bool HasPathSum(TreeNode root, int targetSum)
+        public bool HasPathSum(TreeNode? root, int targetSum)
         {
-            return false;
+            if (root is null)
+            {
+                return false;
+            }
+
+            targetSum -= root.val;
+            if (targetSum == 0 && (root.left is null && root.right is null))
+            {
+                return true;
+            }
+
+            return HasPathSum(root.left, targetSum) || HasPathSum(root.right, targetSum);
         }
     }
 }
