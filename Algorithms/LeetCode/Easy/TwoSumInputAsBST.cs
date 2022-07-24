@@ -1,4 +1,5 @@
 ﻿using Algorithms.Types;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Algorithms.LeetCode.Easy
@@ -34,6 +35,29 @@ namespace Algorithms.LeetCode.Easy
 
         public bool FindTarget(TreeNode root, int k)
         {
+            if (root is null)
+            {
+                return false;
+            }
+
+            var queue = new Queue<TreeNode>();
+            var elements = new HashSet<int>();
+            queue.Enqueue(root);
+            while (queue.Count > 0)
+            {
+                var node = queue.Dequeue();
+                var temp = k - node.val;
+                if (elements.Contains(temp))
+                {
+                    return true;
+                }
+
+                elements.Add(node.val);
+                if (node.left != null) queue.Enqueue(node.left);
+                if (node.right != null) queue.Enqueue(node.right);
+            }
+
+            return false;
 
         }
     }
