@@ -25,7 +25,7 @@ namespace Algorithms.LeetCode.Easy
     {
         public LowestCommonAncestorOfBST()
         {
-            //Add(new TreeNode(new int?[] { 2, 1, 3 }), 3, 1, 2);
+            Add(new TreeNode(new int?[] { 2, 1, 3 }), 3, 1, 2);
             Add(new TreeNode(new int?[] { 6, 2, 8, 0, 4, 7, 9, null, null, 3, 5 }), 0, 5, 2);
             Add(new TreeNode(new int?[] { 6, 2, 8, 0, 4, 7, 9, null, null, 3, 5 }), 2, 8, 6);
         }
