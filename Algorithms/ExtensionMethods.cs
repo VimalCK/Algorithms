@@ -37,5 +37,15 @@ namespace Algorithms
 
             return node?.val == value?.val && AreEqual(node?.left, value?.left) && AreEqual(node?.right, value?.right);
         }
+
+        public static TreeNode? GetNode(this TreeNode? node, int value)
+        {
+            if (node is null || node.val == value)
+            {
+                return node;
+            }
+
+            return GetNode(node?.left, value) ?? GetNode(node?.right, value);
+        }
     }
 }
