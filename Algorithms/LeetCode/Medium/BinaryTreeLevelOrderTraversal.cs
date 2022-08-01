@@ -15,19 +15,19 @@ namespace Algorithms.LeetCode.Medium
      *                                / \
      *                               15  7
      */
-    public class BinaryTreeLevelOrderTraversal : TheoryData<TreeNode, IList<IList<int>>>
+    public class BinaryTreeLevelOrderTraversal : TheoryData<TreeNode?, IList<IList<int>>>
     {
         public BinaryTreeLevelOrderTraversal()
         {
-            Add(new TreeNode(new int?[] { 3, 9, 20, null, null, 15, 7 }), new int[][]
-            {
-               new int[] { 3 },
-               new int[] { 9, 20 },
-               new int[] { 15, 7 },
-            });
+            //Add(new TreeNode(new int?[] { 3, 9, 20, null, null, 15, 7 }), new int[][]
+            //{
+            //   new int[] { 3 },
+            //   new int[] { 9, 20 },
+            //   new int[] { 15, 7 },
+            //});
 
-            Add(new TreeNode(new int?[] { 1 }), new int[][] { new int[] { 1 } });
-            Add(new TreeNode(new int?[] { }), new int[][] { new int[] { } });
+            //Add(new TreeNode(new int?[] { 1 }), new int[][] { new int[] { 1 } });
+            Add(null, new int[][] { new int[] { } });
         }
 
         [Theory]
@@ -42,9 +42,29 @@ namespace Algorithms.LeetCode.Medium
             }
         }
 
+        Dictionary<int, IList<int>> result = new Dictionary<int, IList<int>>();
+
         public IList<IList<int>> LevelOrder(TreeNode root)
         {
+            TraverseTreeNode(root, 0);
+            return result.Values.ToArray();
+        }
 
+        private void TraverseTreeNode(TreeNode? node, int level)
+        {
+            if (node is null)
+            {
+                return;
+            }
+
+            if (!result.ContainsKey(level))
+            {
+                result.Add(level, new List<int>());
+            }
+
+            result[level].Add(node.val);
+            TraverseTreeNode(node?.left, level + 1);
+            TraverseTreeNode(node?.right, level + 1);
         }
     }
 }
