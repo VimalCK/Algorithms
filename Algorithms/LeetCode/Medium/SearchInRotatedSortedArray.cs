@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
@@ -25,7 +26,9 @@ namespace Algorithms.LeetCode.Medium
         {
             Add(new int[] { 4, 5, 6, 7, 0, 1, 2 }, 0, 4);
             Add(new int[] { 4, 5, 6, 7, 0, 1, 2 }, 3, -1);
+            Add(new int[] { 5, 1, 3 }, 5, 0);
             Add(new int[] { 1 }, 0, -1);
+            Add(new int[] { 1, 3 }, 0, -1);
         }
 
         [Theory]
@@ -39,7 +42,64 @@ namespace Algorithms.LeetCode.Medium
 
         public int Search(int[] nums, int target)
         {
+            var rotatedIndex = FindRoatedIndex(nums, 0, nums.GetUpperBound(0));
+            if (rotatedIndex == 0)
+            {
+                return Search(nums, 0, nums.GetUpperBound(0), target);
+            }
 
+            var index = Search(nums, 0, rotatedIndex - 1, target);
+            if (index == -1)
+            {
+                return Search(nums, rotatedIndex, nums.GetUpperBound(0), target);
+            }
+
+            return index;
+        }
+
+        private int Search(int[] nums, int left, int right, int target)
+        {
+            if (left > right)
+            {
+                return -1;
+            }
+
+            var pivot = (left + right) / 2;
+            if (nums[pivot] == target)
+            {
+                return pivot;
+            }
+            else if (nums[pivot] > target)
+            {
+                return Search(nums, left, pivot - 1, target);
+            }
+            else
+            {
+                return Search(nums, pivot + 1, right, target);
+            }
+        }
+
+        private int FindRoatedIndex(int[] nums, int left, int right)
+        {
+            while (left <= right)
+            {
+                int pivot = (left + right) / 2;
+                int nextIndex = pivot < nums.Length - 1 ? pivot + 1 : pivot;
+                if (nums[pivot] > nums[nextIndex])
+                {
+                    return ++pivot;
+                }
+                else if (nums[pivot] < nums[left])
+                {
+                    right = --pivot;
+                }
+                else
+                {
+                    left = ++pivot;
+                }
+            }
+
+            return 0;
         }
     }
 }
