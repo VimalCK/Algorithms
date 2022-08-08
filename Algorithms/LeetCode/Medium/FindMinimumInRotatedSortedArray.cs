@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
@@ -41,7 +43,30 @@ namespace Algorithms.LeetCode.Medium
 
         public int FindMin(int[] nums)
         {
+            return FindRotatedIndexValue(nums, 0, nums.GetUpperBound(0));
+        }
 
+        private int FindRotatedIndexValue(int[] nums, int left, int right)
+        {
+            while (left <= right)
+            {
+                var pivot = (left + right) / 2;
+                var nextIndex = pivot < nums.Length - 1 ? pivot + 1 : pivot;
+                if (nums[pivot] > nums[nextIndex])
+                {
+                    return Math.Min(nums[0], nums[nextIndex]);
+                }
+                else if (nums[pivot] < nums[left])
+                {
+                    right = pivot - 1;
+                }
+                else
+                {
+                    left = pivot + 1;
+                }
+            }
+
+            return nums[0];
         }
     }
 }
