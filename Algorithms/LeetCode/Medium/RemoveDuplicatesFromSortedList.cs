@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
@@ -29,9 +31,55 @@ namespace Algorithms.LeetCode.Medium
 
             Assert.True(result.AreEqual(expectedResult));
         }
-        public ListNode DeleteDuplicates(ListNode head)
-        {
 
+        public ListNode? DeleteDuplicates(ListNode? head)
+        {
+            //Recursive
+
+            if (head == null)
+            {
+                return head;
+            }
+
+            var result = DeleteDuplicates(head?.next);
+            if (head != null && head.val != head.next?.val)
+            {
+                head.next = result;
+                return head;
+            }
+            else
+            {
+                return result?.val == head?.val ? result?.next : result;
+            }
+
+
+
+            // Sentinel head + Predecessor
+
+            var sentinel = new ListNode();
+            sentinel.next = head;
+            var pred = sentinel;
+
+            while (head != null)
+            {
+                if (head.next != null && head.val == head.next.val)
+                {
+                    while (head.next != null && head.val == head.next.val)
+                    {
+                        head = head.next;
+                    }
+                  
+                    pred.next = head.next;
+                }
+                else
+                {
+                    pred = pred.next;
+                }
+
+                head = head.next;
+            }
+
+            return sentinel.next;
         }
     }
 }
