@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
@@ -52,7 +53,7 @@ namespace Algorithms.LeetCode.Medium
 
         public int[][] IntervalIntersection(int[][] firstList, int[][] secondList)
         {
-
+            return default;
         }
     }
 }
