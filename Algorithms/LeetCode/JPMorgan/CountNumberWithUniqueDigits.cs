@@ -40,7 +40,8 @@ namespace Algorithms.LeetCode.JPMorgan
 
             for (int i = 1; i < n; i++)
             {
-
+                product *= 10 - i;
+                sum += product;
             }
 
             return sum;
