@@ -1,9 +1,4 @@
-﻿using Algorithms.LeetCode.Easy;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using Xunit;
 
 namespace Algorithms.LeetCode.BitManipulation
