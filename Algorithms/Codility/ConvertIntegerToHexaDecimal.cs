@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Xunit;
 
-namespace Algorithms.LeetCode.BitManipulation
+namespace Algorithms.Codility
 {
     public class ConvertIntegerToHexaDecimal : TheoryData<int, string>
     {
